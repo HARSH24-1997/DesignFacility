@@ -3,11 +3,10 @@ import Axios from 'axios';
 import Section from '../../components/Main/Section';
 import QuestionLeft from '../../components/Main/QuestionLeft';
 import Desc from '../../components/Main/Desc';
-import Mcq from '../../components/Main/Mcq';
-
+import { useHistory } from 'react-router-dom'
 
 function Index() {
-
+    let history = useHistory();
     const [secCount, setSecCount] = useState(0);
     const [respData, setRespData] = useState([]);
     const [resp, setResp] = useState([]);
@@ -45,6 +44,9 @@ function Index() {
         }
     }
 
+    const Routing = ()=>{
+        history.push("/End");
+    }
 
     return (
         <div className="container-fluid" >
@@ -55,7 +57,7 @@ function Index() {
                 <div className="col-2 px-0" style={{borderLeft:"2px solid #81A2BB"}} >
                     <QuestionLeft />
                     <Section SecCount={secCount} funValue={funValue}/>
-                        <center><a class="btn btn-outline-secondary btn-block btn-lg " href="#" >Submit Exam</a></center>
+                        <center><a class="btn btn-outline-secondary btn-block btn-lg " onClick={Routing} >Submit Exam</a></center>
                 </div>
             </div>
         </div>

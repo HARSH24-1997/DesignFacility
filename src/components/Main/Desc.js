@@ -1,8 +1,10 @@
 import React from 'react'
 import Mcq from '../../components/Main/Mcq';
 import { useState, useEffect, useLayoutEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 
 function Desc({ Data, Resp }) {
+  let history = useHistory();
   const [minutes, setMinutes] = useState(Data.examTime === undefined ? 0 : Data.examTime);
   const [seconds, setSeconds] = useState(0);
 
@@ -23,6 +25,7 @@ function Desc({ Data, Resp }) {
       if (seconds === 0) {
         if (minutes === 0) {
           clearInterval(myInterval)
+          history.push("/End")
         } else {
           setMinutes(minutes - 1);
           setSeconds(59);
